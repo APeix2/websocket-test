@@ -19,11 +19,11 @@ interface Messages {
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('websocket-client');
+  protected readonly title = signal('websocket-client2');
   private socket$: WebSocketSubject<any>;
 
   messages = signal<Messages[]>([]);
-  myself = '臭小狗';
+  myself = '蠟比比';
 
   sendMsg = signal('');
 
