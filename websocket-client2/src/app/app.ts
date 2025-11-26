@@ -14,7 +14,14 @@ interface Messages {
 
 @Component({
   selector: 'app-root',
-  imports: [MatButtonModule, MatCardModule, FormsModule, MatFormFieldModule, MatInputModule,MatIconModule],
+  imports: [
+    MatButtonModule,
+    MatCardModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -23,7 +30,7 @@ export class App {
   private socket$: WebSocketSubject<any>;
 
   messages = signal<Messages[]>([]);
-  myself = '蠟比比';
+  myself = '啊培培';
 
   sendMsg = signal('');
 
@@ -35,7 +42,7 @@ export class App {
     this.getMessages().subscribe();
   }
 
-  // Send a message to the server
+  // 發送訊息給 server
   sendMessage(message: any) {
     const msg: Messages = {
       user: this.myself,
@@ -46,7 +53,7 @@ export class App {
     this.socket$.next(msg);
   }
 
-  // Receive messages from the server
+  // 接收來自 server 的訊息
   getMessages(): Observable<Messages> {
     return this.socket$.asObservable().pipe(
       tap((message) => {
@@ -55,7 +62,7 @@ export class App {
     );
   }
 
-  // Close the WebSocket connection
+  // 關閉 WebSocket 連線
   closeConnection() {
     this.socket$.complete();
   }
