@@ -27,7 +27,7 @@ interface Messages {
 })
 export class App {
   protected readonly title = signal('websocket-client');
-  private socket$: WebSocketSubject<any>;
+  private socket$: WebSocketSubject<Messages>;
 
   messages = signal<Messages[]>([]);
   myself = '臭小狗';
@@ -43,7 +43,7 @@ export class App {
   }
 
   // 發送訊息給 server
-  sendMessage(message: any) {
+  sendMessage(message: string) {
     const msg: Messages = {
       user: this.myself,
       text: message,
